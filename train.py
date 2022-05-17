@@ -71,7 +71,7 @@ if __name__ == "__main__":
             transform=transform.Transforms(size=args.image_size, s=0.5),
         )
         # dataset = data.ConcatDataset([train_dataset, test_dataset])
-        dataset = data.ConcatDataset([train_dataset, train_dataset])
+        dataset = train_dataset
         class_num = 10
     else:
         raise NotImplementedError
