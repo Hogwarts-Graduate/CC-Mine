@@ -7,19 +7,24 @@ from modules import transform, resnet, network, contrastive_loss
 from utils import yaml_config_hook, save_model
 from torch.utils import data
 
-xifile = open('/home/liangc/ywtProgram/CC-Mine/xiFile.txt', 'w')
-xjfile = open('/home/liangc/ywtProgram/CC-Mine/xjFile.txt', 'w')
-dataloaderfile = open(
-    '/home/liangc/ywtProgram/CC-Mine/dataloaderFile.txt', 'w')
+# xifile = open('/home/liangc/ywtProgram/CC-Mine/xiFile.txt', 'w')
+# xjfile = open('/home/liangc/ywtProgram/CC-Mine/xjFile.txt', 'w')
+# dataloaderfile = open(
+#     '/home/liangc/ywtProgram/CC-Mine/dataloaderFile.txt', 'w')
 
 
 def train():
     loss_epoch = 0
     for step, ((x_i, x_j), _) in enumerate(data_loader):
-        print(data_loader, file=dataloaderfile)
         optimizer.zero_grad()
-        print(x_i, file=xifile)
-        print(x_j, file=xjfile)
+        # print(x_i, file=xifile)
+        # print(x_j, file=xjfile)
+        # print(data_loader, file=dataloaderfile)
+        print('**************************')
+        x_i_np = np.array(x_i)
+        print(np.shape(x_i_np))
+        x_j_np = np.array(x_j)
+        print(np.shape(x_j_np))
         print('**************************')
         x_i = x_i.to('cuda')
         x_j = x_j.to('cuda')
@@ -105,6 +110,6 @@ if __name__ == "__main__":
     save_model(args, model, optimizer, args.epochs)
 
 
-xifile.close()
-xjfile.close()
-dataloaderfile.close()
+# xifile.close()
+# xjfile.close()
+# dataloaderfile.close()
