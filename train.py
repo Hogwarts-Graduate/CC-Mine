@@ -21,11 +21,11 @@ def train():
         # print(x_j, file=xjfile)
         # print(data_loader, file=dataloaderfile)
         print('**************************')
-        x_i_np = np.array(x_i)
-        print(np.shape(x_i_np))
-        x_j_np = np.array(x_j)
-        print(np.shape(x_j_np))
-        print(x_i.equal(x_j))
+        # x_i_np = np.array(x_i)
+        # print(np.shape(x_i_np))
+        # x_j_np = np.array(x_j)
+        # print(np.shape(x_j_np))
+        # print(x_i.equal(x_j))            # <false>
         print('**************************')
         x_i = x_i.to('cuda')
         x_j = x_j.to('cuda')
@@ -70,7 +70,8 @@ if __name__ == "__main__":
             train=False,
             transform=transform.Transforms(size=args.image_size, s=0.5),
         )
-        dataset = data.ConcatDataset([train_dataset, test_dataset])
+        # dataset = data.ConcatDataset([train_dataset, test_dataset])
+        dataset = data.ConcatDataset([train_dataset, train_dataset])
         class_num = 10
     else:
         raise NotImplementedError
