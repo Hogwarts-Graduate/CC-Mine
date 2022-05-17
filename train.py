@@ -7,14 +7,19 @@ from modules import transform, resnet, network, contrastive_loss
 from utils import yaml_config_hook, save_model
 from torch.utils import data
 
+xifile = open('/home/liangc/ywtProgram/CC-Mine/xiFile.txt', 'w')
+xjfile = open('/home/liangc/ywtProgram/CC-Mine/xjFile.txt', 'w')
+dataloaderfile = open(
+    '/home/liangc/ywtProgram/CC-Mine/dataloaderFile.txt', 'w')
+
 
 def train():
     loss_epoch = 0
     for step, ((x_i, x_j), _) in enumerate(data_loader):
-        print(data_loader)
+        print(data_loader, file=dataloaderfile)
         optimizer.zero_grad()
-        print(x_i)
-        print(x_j)
+        print(x_i, file=xifile)
+        print(x_j, file=xjfile)
         print('**************************')
         x_i = x_i.to('cuda')
         x_j = x_j.to('cuda')
@@ -98,3 +103,8 @@ if __name__ == "__main__":
         print(
             f"Epoch [{epoch}/{args.epochs}]\t Loss: {loss_epoch / len(data_loader)}")
     save_model(args, model, optimizer, args.epochs)
+
+
+xifile.close()
+xjfile.close()
+dataloaderfile.close()
