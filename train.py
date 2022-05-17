@@ -25,6 +25,10 @@ def train():
         print(np.shape(x_i_np))
         x_j_np = np.array(x_j)
         print(np.shape(x_j_np))
+        if x_j == x_i:
+            print('equal')
+        else:
+            print('not equal')
         print('**************************')
         x_i = x_i.to('cuda')
         x_j = x_j.to('cuda')
