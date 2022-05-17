@@ -31,20 +31,20 @@ class Transforms:
         ]
         # if blur:
         #     self.train_transform.append(GaussianBlur(kernel_size=23))
-        # self.train_transform.append(torchvision.transforms.ToTensor())
-        # self.test_transform = [
-        #     torchvision.transforms.Resize(size=(size, size)),
-        #     torchvision.transforms.ToTensor(),
-        # ]
+        self.train_transform.append(torchvision.transforms.ToTensor())
+        self.test_transform = [
+            torchvision.transforms.Resize(size=(size, size)),
+            torchvision.transforms.ToTensor(),
+        ]
         # if mean and std:
         #     self.train_transform.append(
         #         torchvision.transforms.Normalize(mean=mean, std=std))
         #     self.test_transform.append(
         #         torchvision.transforms.Normalize(mean=mean, std=std))
-        # self.train_transform = torchvision.transforms.Compose(
-        #     self.train_transform)
-        # self.test_transform = torchvision.transforms.Compose(
-        #     self.test_transform)
+        self.train_transform = torchvision.transforms.Compose(
+            self.train_transform)
+        self.test_transform = torchvision.transforms.Compose(
+            self.test_transform)
 
     def __call__(self, x):
-        return x, x
+        return self.train_transform(x), self.train_transform(x)
