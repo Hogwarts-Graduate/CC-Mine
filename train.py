@@ -25,7 +25,7 @@ def train():
         # print(np.shape(x_i_np))
         # x_j_np = np.array(x_j)
         # print(np.shape(x_j_np))
-        # print(x_i.equal(x_j))            # <false>
+        print(x_i.equal(x_j))            # <false>
         print('**************************')
         x_i = x_i.to('cuda')
         x_j = x_j.to('cuda')
@@ -60,13 +60,13 @@ if __name__ == "__main__":
     if args.dataset == "TCGA":
         train_dataset = torchvision.datasets.CIFAR10(
             root=args.dataset_dir,
-            download=True,
+            download=False,
             train=True,
             transform=transform.Transforms(size=args.image_size, s=0.5),
         )
         test_dataset = torchvision.datasets.CIFAR10(
             root=args.dataset_dir,
-            download=True,
+            download=False,
             train=False,
             transform=transform.Transforms(size=args.image_size, s=0.5),
         )
