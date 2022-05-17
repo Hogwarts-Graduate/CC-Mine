@@ -62,13 +62,13 @@ if __name__ == "__main__":
             root=args.dataset_dir,
             download=False,
             train=True,
-            transform=transform.Transforms(size=args.image_size, s=0.5),
+            # transform=transform.Transforms(size=args.image_size, s=0.5),
         )
         test_dataset = torchvision.datasets.CIFAR10(
             root=args.dataset_dir,
             download=False,
             train=False,
-            transform=transform.Transforms(size=args.image_size, s=0.5),
+            # transform=transform.Transforms(size=args.image_size, s=0.5),
         )
         # dataset = data.ConcatDataset([train_dataset, test_dataset])
         dataset = train_dataset
