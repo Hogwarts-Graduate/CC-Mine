@@ -1,4 +1,5 @@
 from __future__ import division, print_function
+from turtle import clear
 import numpy as np
 import scipy.io as sio
 import torch
@@ -110,21 +111,15 @@ data = load_cancer_data('aml.mat', '/Users/sky/Desktop/CC-Mine/TCGA/data')
 print('success')
 dataset = CancerDataset('aml.mat', '/Users/sky/Desktop/CC-Mine/TCGA/data')
 train_loader = DataLoader(dataset, batch_size=128, shuffle=False)
-print('--------------------------------------------')
-print('--------------------------------------------')
-for step, (x_i, _, idx) in enumerate(train_loader):
-    print(np.shape(np.array(x_i[0])))
-    x_i = np.array(x_i)
-    print(np.shape(x_i))
-    # print(x_i)
-    print('--------------------------------------------')
+# for step, (x_i, _, idx) in enumerate(train_loader):
+#     print(np.shape(np.array(x_i[0])))
+#     x_i = np.array(x_i)
+#     print(np.shape(x_i))
+#     # print(x_i)
+#     print('--------------------------------------------')
 
-# for batch_idx, (x, _, idx) in enumerate(train_loader):
-#     if batch_idx == 0:
-#         print(x)
-#         print('--------------------------------------------')
-#         print(x[0][0])
-#         print(x[0][1])
-#         print(x[0][2])
-
-#     print(f'Current batch : {batch_idx}')
+for batch_idx, (x, _, idx) in enumerate(train_loader):
+    for i in range(0, 3):
+        print(i)
+    print(x)
+    print(f'Current batch : {batch_idx}')
